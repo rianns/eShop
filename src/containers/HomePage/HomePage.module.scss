@@ -1,0 +1,23 @@
+.HomePage {
+	width: 80vw;
+	display: flex;
+	flex-flow: column nowrap;
+	height: fit-content;
+
+	&_Carousel {
+		max-width: 800px;
+		max-height: fit-content;
+		display: flex;
+		justify-content: center;
+		align-self: center;
+		margin: 50px 0;
+		box-shadow: 2px 2px 15px #000;
+		padding: 10px;
+		background-color: white;
+		border-radius: 5px;
+	}
+
+	&_Grid {
+		margin: 10px 0;
+	}
+}

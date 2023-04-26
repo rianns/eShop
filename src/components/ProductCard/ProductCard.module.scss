@@ -1,0 +1,40 @@
+@import "../../assets/styles/modules/theme.module";
+
+.ProductCard {
+	width: 20rem;
+	height: 20rem;
+	box-shadow: 2px 2px 5px rgba($color: #000000, $alpha: 0.5);
+	border-radius: 5px;
+	padding: 10px;
+	position: relative;
+
+	&_Desc {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		display: flex;
+		flex-flow: column wrap;
+		justify-content: center;
+		align-items: center;
+		opacity: 0;
+		text-decoration: none;
+		color: $primary-clr;
+		font-family: $title-font;
+		font-size: 1rem;
+
+		&:hover {
+			background-color: rgba(white, $alpha: 0.6);
+			opacity: 1;
+			transition: all ease-in-out 0.3s;
+			color: $primary-clr;
+		}
+
+		&_Img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+}

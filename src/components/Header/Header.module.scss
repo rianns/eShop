@@ -1,0 +1,25 @@
+@import "../../assets/styles/modules/theme.module";
+
+.Header {
+	height: 10vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	h1 {
+		font-family: $title-font;
+		font-size: 3rem;
+	}
+}
+
+.Link {
+	&:link {
+		text-decoration: none;
+		color: $primary-clr;
+		cursor: pointer;
+	}
+	&:visited {
+		text-decoration: none;
+		color: $primary-clr;
+	}
+}

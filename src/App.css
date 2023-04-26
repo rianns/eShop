@@ -1,0 +1,10 @@
+.App {
+	width: 100vw;
+	display: flex;
+	flex-flow: column wrap;
+	align-items: center;
+}
+
+.App_Top {
+	width: 80vw;
+}

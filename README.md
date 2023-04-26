@@ -1,2 +1,3 @@
-# eShop
-a shopping website using firestore db 
+### eShop
+
+a shopping website using firestore db

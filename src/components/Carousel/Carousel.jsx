@@ -1,51 +1,59 @@
+import { NavLink } from "react-router-dom";
+
 const Carousel = () => {
 	return (
 		<div
-			id='carouselExampleIndicators'
+			id='photosCarousel'
 			className='carousel slide'
 			data-ride='carousel'
 		>
 			<ol className='carousel-indicators'>
 				<li
-					data-target='#carouselExampleIndicators'
+					data-target='#photosCarousel'
 					data-slide-to='0'
 					className='active'
 				></li>
 				<li
-					data-target='#carouselExampleIndicators'
+					data-target='#photosCarousel'
 					data-slide-to='1'
 				></li>
 				<li
-					data-target='#carouselExampleIndicators'
+					data-target='#photosCarousel'
 					data-slide-to='2'
 				></li>
 			</ol>
 			<div className='carousel-inner'>
 				<div className='carousel-item active'>
-					<img
-						className='d-block w-100'
-						src='src/assets/images/landscape.jpg'
-						alt='Landscape Photography'
-					/>
+					<NavLink to='/eShop/products/XRFgNgUPpARijLT6gVYz'>
+						<img
+							className='d-block w-100'
+							src='src/assets/images/landscape.jpg'
+							alt='Landscape Photography'
+						/>
+					</NavLink>
 				</div>
 				<div className='carousel-item'>
-					<img
-						className='d-block w-100'
-						src='src/assets/images/infant.jpg'
-						alt='Infant Photography'
-					/>
+					<NavLink to='/eShop/products/52ANUGp1vddw5GONYHDk'>
+						<img
+							className='d-block w-100'
+							src='src/assets/images/infant.jpg'
+							alt='Infant Photography'
+						/>
+					</NavLink>
 				</div>
 				<div className='carousel-item'>
-					<img
-						className='d-block w-100'
-						src='src/assets/images/event.jpg'
-						alt='Event Photography'
-					/>
+					<NavLink to='/eShop/products/qU6DpGW1cL6TVijYkw33'>
+						<img
+							className='d-block w-100'
+							src='src/assets/images/event.jpg'
+							alt='Event Photography'
+						/>
+					</NavLink>
 				</div>
 			</div>
 			<a
 				className='carousel-control-prev'
-				href='#carouselExampleIndicatorsTESTING'
+				data-target='#photosCarousel'
 				role='button'
 				data-slide='prev'
 			>
@@ -53,11 +61,11 @@ const Carousel = () => {
 					className='carousel-control-prev-icon'
 					aria-hidden='true'
 				></span>
-				<span className='sr-only'>Previous</span>
+				<span className='sr-only'></span>
 			</a>
 			<a
 				className='carousel-control-next'
-				href='#carouselExampleIndicators'
+				data-target='#photosCarousel'
 				role='button'
 				data-slide='next'
 			>
@@ -65,7 +73,7 @@ const Carousel = () => {
 					className='carousel-control-next-icon'
 					aria-hidden='true'
 				></span>
-				<span className='sr-only'>Next</span>
+				<span className='sr-only'></span>
 			</a>
 		</div>
 	);

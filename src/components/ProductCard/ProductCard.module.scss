@@ -22,7 +22,6 @@
 		text-decoration: none;
 		color: $primary-clr;
 		font-family: $title-font;
-		font-size: 1rem;
 
 		&:hover {
 			background-color: rgba(white, $alpha: 0.6);
@@ -35,6 +34,12 @@
 			width: 100%;
 			height: 100%;
 			object-fit: cover;
+		}
+
+		h3 {
+			font-size: 1.5rem;
+			text-align: center;
+			margin: 10px 20px;
 		}
 	}
 }

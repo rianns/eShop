@@ -8,6 +8,7 @@ import {
 	getDocs,
 	updateDoc,
 	increment,
+	deleteField,
 } from "firebase/firestore";
 
 export const getAllProducts = async () => {
@@ -45,4 +46,11 @@ export const updateStock = async (id, num) => {
 	console.log(num);
 	const docRef = doc(db, "photos", id);
 	await updateDoc(docRef, { qtyAdded: increment(num) });
+};
+
+// deleting doc field when amount of qtyAdded is checked out of the cart
+export const deleteQtyAdded = async (id) => {
+	const docRef = doc(db, "photos", id);
+	const delData = { qtyAdded: deleteField() };
+	await updateDoc(docRef, delData);
 };

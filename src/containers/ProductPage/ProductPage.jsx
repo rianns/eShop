@@ -1,3 +1,4 @@
+import styles from "./ProductPage.module.scss";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import {
@@ -29,59 +30,66 @@ const ProductPage = ({ updated, setUpdated }) => {
 	}, [id, updated]);
 
 	const handleClickDec = async () => {
-		await updateStock(id, -1);
-		setUpdated(updated + 1);
+		if (product.qtyAdded && product["qtyAdded"] >= 0) {
+			await updateStock(id, -1);
+			setUpdated(updated + 1);
+		}
 	};
 
 	const handleClickInc = async () => {
-		await updateStock(id, 1);
-		setUpdated(updated + 1);
+		if (product.qtyAdded && product["qtyAdded"] < product["quantity"]) {
+			await updateStock(id, 1);
+			setUpdated(updated + 1);
+		}
 	};
 
 	const inputChange = (e) => {
-		setQuantity({ qtyAdded: e.target.value });
+		setQuantity({ qtyAdded: parseInt(e.target.value) });
 	};
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		await updateItems(id, quantity);
-		setUpdated(updated + 1);
+		await setUpdated(updated + 1);
 	};
 
-	console.log("QUANTITY");
-	console.log(quantity);
-	console.log(product);
+	// console.log("QUANTITY");
+	// console.log(quantity.qtyAdded);
 
 	return error === false && product ? (
-		<section className=''>
-			<div>
+		<section className={styles.ProductPage}>
+			<div className={styles.ProductPage_Img}>
 				<img
 					src={product?.image ?? "No Image"}
 					alt=''
 				/>
 			</div>
-			<div>
-				<h2>{product?.["photo-title"] ?? "No Title"}</h2>
-				<form onSubmit={handleSubmit}>
-					<button onClick={handleClickDec}>-</button>
-					<input
-						type='number'
-						name='inputQty'
-						id='inputQty'
-						// value={product["qtyAdded"]}
-						onChange={inputChange}
-						required
-					/>
-					<button onClick={handleClickInc}>+</button>
-					<input
-						type='submit'
-						value='Add to Cart'
-					/>
-				</form>
-				<p>
-					Location:{" "}
-					{`${product?.location?.suburb}, ${product?.location?.state}, ${product?.location?.country}`}
-				</p>
+			<div className={styles.ProductPage_Info}>
+				<div className={styles.ProductPage_Info_Desc}>
+					<h2>{product?.["photo-title"] ?? "No Title"}</h2>
+					<p>
+						Location:{" "}
+						{`${product?.location?.suburb}, ${product?.location?.state}, ${product?.location?.country}`}
+					</p>
+				</div>
+				<div className={styles.ProductPage_Info_Cart}>
+					<form onSubmit={handleSubmit}>
+						<button onClick={handleClickDec}>-</button>
+						<input
+							type='number'
+							name='inputQty'
+							id='inputQty'
+							// value={product["qtyAdded"]}
+							onChange={inputChange}
+							required
+						/>
+						<button onClick={handleClickInc}>+</button>
+						<input
+							type='submit'
+							value='Add to Cart'
+						/>
+					</form>
+				</div>
 			</div>
 		</section>
 	) : (

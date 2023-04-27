@@ -1,0 +1,27 @@
+.ProductPage {
+	width: 80vw;
+	border: 1px solid red;
+
+	&_Img {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin: 50px;
+
+		img {
+			width: 100%;
+			max-width: 900px;
+		}
+	}
+
+	&_Info {
+		display: flex;
+		justify-content: space-between;
+
+		&_Desc {
+		}
+
+		&_Cart {
+		}
+	}
+}

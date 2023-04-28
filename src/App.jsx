@@ -48,7 +48,7 @@ function App() {
 			<BrowserRouter>
 				<div className='App_Top'>
 					<Header />
-					<Nav />
+					<Nav cartItems={cartItems} />
 				</div>
 				<Routes>
 					<Route

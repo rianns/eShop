@@ -25,6 +25,10 @@ const CartPage = ({ addToCart, removeFromCart, total, cartItems }) => {
 					</div>
 				))
 			)}
+			<div>
+				<p>Total: {total}</p>
+			</div>
+			<button>Checkout</button>
 		</section>
 	);
 };

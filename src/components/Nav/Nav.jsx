@@ -1,8 +1,7 @@
 import { NavLink } from "react-router-dom";
 import styles from "./Nav.module.scss";
-import CartPage from "../../containers/CartPage/CartPage";
 
-const Nav = () => {
+const Nav = ({ cartItems }) => {
 	return (
 		<div className={styles.NavBar}>
 			<nav className={styles.NavBar_Nav}>
@@ -24,7 +23,7 @@ const Nav = () => {
 					to='/eShop/cart'
 					className={styles.NavBar_Nav_Link}
 				>
-					Cart
+					Cart ({cartItems.length})
 				</NavLink>
 			</div>
 		</div>

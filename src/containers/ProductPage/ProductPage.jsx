@@ -86,6 +86,14 @@ const ProductPage = ({ updated, setUpdated, addToCart }) => {
 				</div>
 				<div className={styles.ProductPage_Info_Cart}>
 					<form onSubmit={handleSubmit}>
+						<select
+							name='size'
+							id='size'
+						>
+							<option value='large'>Large (40 x 30 cm)</option>
+							<option value='medium'>Medium (20 x 25 cm)</option>
+							<option value='small'>Small (15 x 10 cm)</option>
+						</select>
 						<button onClick={handleClickDec}>-</button>
 						<input
 							type='number'

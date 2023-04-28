@@ -1,6 +1,5 @@
 .ProductPage {
 	width: 80vw;
-	border: 1px solid red;
 
 	&_Img {
 		display: flex;
@@ -22,6 +21,10 @@
 		}
 
 		&_Cart {
+			form {
+				display: flex;
+				flex-flow: column wrap;
+			}
 		}
 	}
 }

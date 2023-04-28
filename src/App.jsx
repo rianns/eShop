@@ -27,7 +27,6 @@ function App() {
 	};
 
 	const removeFromCart = (itemToRemove) => {
-		console.log(cartItems);
 		setCartItems(cartItems.filter((item) => item !== itemToRemove));
 	};
 

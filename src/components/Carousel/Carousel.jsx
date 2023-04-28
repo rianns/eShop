@@ -7,7 +7,7 @@ const Carousel = () => {
 			className='carousel slide'
 			data-ride='carousel'
 		>
-			<ol className='carousel-indicators'>
+			{/* <ol className='carousel-indicators'>
 				<li
 					data-target='#photosCarousel'
 					data-slide-to='0'
@@ -21,7 +21,7 @@ const Carousel = () => {
 					data-target='#photosCarousel'
 					data-slide-to='2'
 				></li>
-			</ol>
+			</ol> */}
 			<div className='carousel-inner'>
 				<div className='carousel-item active'>
 					<NavLink to='/eShop/products/XRFgNgUPpARijLT6gVYz'>

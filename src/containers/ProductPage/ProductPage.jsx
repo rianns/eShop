@@ -11,8 +11,8 @@ const ProductPage = ({ updated, setUpdated, addToCart }) => {
 	const { id } = useParams();
 	const nav = useNavigate();
 	const [inCart, setInCart] = useState(0);
-	const [quantity, setQuantity] = useState({ qtyAdded: 0 });
-	const [product, setProducts] = useState(null);
+	// const [quantity, setQuantity] = useState({ qtyAdded: 0 });
+	const [product, setProduct] = useState(null);
 	const [error, setError] = useState(false);
 
 	useEffect(() => {
@@ -22,7 +22,7 @@ const ProductPage = ({ updated, setUpdated, addToCart }) => {
 					setError(false);
 				}
 				const data = await getProductById(id);
-				setProducts(data);
+				setProduct(data);
 			} catch (e) {
 				console.log(e);
 				setError(true);
@@ -31,40 +31,31 @@ const ProductPage = ({ updated, setUpdated, addToCart }) => {
 		wrapper();
 	}, [id, updated]);
 
-	const handleClickDec = async () => {
-		if (product.qtyAdded && product["qtyAdded"] >= 0) {
-			// await updateStock(id, -1);
-			setInCart(inCart - 1);
-			setUpdated(updated + 1);
-		}
+	const handleClickDec = () => {
+		setInCart(inCart - 1);
+		console.log(inCart);
 	};
 
-	const handleClickInc = async () => {
-		if (product.qtyAdded && product["qtyAdded"] < product["quantity"]) {
-			// await updateStock(id, 1);
-			setInCart(inCart + 1);
-			setUpdated(updated + 1);
-		}
+	const handleClickInc = () => {
+		setInCart(inCart + 1);
 	};
 
 	const inputChange = (e) => {
-		setQuantity({ qtyAdded: parseInt(e.target.value) });
+		// setQuantity({ qtyAdded: parseInt(e.target.value) });
 	};
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		await updateItems(id, quantity);
-		// await updateStock(id, );
+		await updateItems(id, { qtyAdded: inCart });
+		await addToCart(product);
 		await setUpdated(updated + 1);
-		handleAddToCart(product);
 	};
 
-	const handleAddToCart = async (item) => {
-		await addToCart(item);
-		// nav(`/eShop/cart`);
-	};
+	// const handleAddToCart = async (item) => {
+	// 	await addToCart(product);
+	// 	// nav(`/eShop/cart`);
+	// };
 
-	console.log(inCart);
 	// console.log("QUANTITY");
 	// console.log(quantity.qtyAdded);
 
@@ -85,7 +76,7 @@ const ProductPage = ({ updated, setUpdated, addToCart }) => {
 					</p>
 				</div>
 				<div className={styles.ProductPage_Info_Cart}>
-					<form onSubmit={handleSubmit}>
+					<form>
 						<select
 							name='size'
 							id='size'
@@ -95,13 +86,14 @@ const ProductPage = ({ updated, setUpdated, addToCart }) => {
 							<option value='small'>Small (15 x 10 cm)</option>
 						</select>
 						<button onClick={handleClickDec}>-</button>
-						<input
+						{/* <input
 							type='number'
 							name='inputQty'
 							id='inputQty'
-							onChange={inputChange}
+							value={0 ?? inCart}
 							required
-						/>
+						/> */}
+						<div>{inCart}</div>
 						<button onClick={handleClickInc}>+</button>
 						<input
 							type='submit'

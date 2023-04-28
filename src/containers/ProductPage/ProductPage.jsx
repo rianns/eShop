@@ -1,14 +1,16 @@
 import styles from "./ProductPage.module.scss";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import {
 	getProductById,
 	updateItems,
 	updateStock,
 } from "../../services/photos";
 
-const ProductPage = ({ updated, setUpdated }) => {
+const ProductPage = ({ updated, setUpdated, addToCart }) => {
 	const { id } = useParams();
+	const nav = useNavigate();
+	const [inCart, setInCart] = useState(0);
 	const [quantity, setQuantity] = useState({ qtyAdded: 0 });
 	const [product, setProducts] = useState(null);
 	const [error, setError] = useState(false);
@@ -31,14 +33,16 @@ const ProductPage = ({ updated, setUpdated }) => {
 
 	const handleClickDec = async () => {
 		if (product.qtyAdded && product["qtyAdded"] >= 0) {
-			await updateStock(id, -1);
+			// await updateStock(id, -1);
+			setInCart(inCart - 1);
 			setUpdated(updated + 1);
 		}
 	};
 
 	const handleClickInc = async () => {
 		if (product.qtyAdded && product["qtyAdded"] < product["quantity"]) {
-			await updateStock(id, 1);
+			// await updateStock(id, 1);
+			setInCart(inCart + 1);
 			setUpdated(updated + 1);
 		}
 	};
@@ -50,9 +54,17 @@ const ProductPage = ({ updated, setUpdated }) => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		await updateItems(id, quantity);
+		// await updateStock(id, );
 		await setUpdated(updated + 1);
+		handleAddToCart(product);
 	};
 
+	const handleAddToCart = async (item) => {
+		await addToCart(item);
+		// nav(`/eShop/cart`);
+	};
+
+	console.log(inCart);
 	// console.log("QUANTITY");
 	// console.log(quantity.qtyAdded);
 
@@ -79,7 +91,6 @@ const ProductPage = ({ updated, setUpdated }) => {
 							type='number'
 							name='inputQty'
 							id='inputQty'
-							// value={product["qtyAdded"]}
 							onChange={inputChange}
 							required
 						/>
@@ -87,6 +98,7 @@ const ProductPage = ({ updated, setUpdated }) => {
 						<input
 							type='submit'
 							value='Add to Cart'
+							onClick={handleSubmit}
 						/>
 					</form>
 				</div>

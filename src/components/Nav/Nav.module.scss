@@ -1,33 +1,44 @@
 @import "../../assets/styles/modules/theme.module";
 
-.Nav {
+.NavBar {
 	display: flex;
-	border-bottom: 1px solid gray;
+	justify-content: space-between;
 
-	&_Link {
-		padding: 10px 20px;
+	&_Nav {
+		display: flex;
+		border-bottom: 1px solid gray;
 
-		&:link {
-			text-decoration: none;
-			color: $primary-clr;
-			cursor: pointer;
-			font-family: $nav-font;
-			font-size: 1.2em;
+		&_Link {
+			padding: 10px 20px;
+
+			&:link {
+				text-decoration: none;
+				color: $primary-clr;
+				cursor: pointer;
+				font-family: $nav-font;
+				font-size: 1.2em;
+			}
+			&:visited {
+				text-decoration: none;
+				color: $primary-clr;
+			}
+			&:hover {
+				text-decoration: none;
+				color: $primary-clr;
+				text-shadow: 2px 2px $accent-clr;
+			}
+			&:active {
+				text-decoration: none;
+				color: $primary-clr;
+				text-shadow: none;
+				transform: translate(2px, 2px);
+			}
 		}
-		&:visited {
-			text-decoration: none;
-			color: $primary-clr;
-		}
-		&:hover {
-			text-decoration: none;
-			color: $primary-clr;
-			text-shadow: 2px 2px $accent-clr;
-		}
-		&:active {
-			text-decoration: none;
-			color: $primary-clr;
-			text-shadow: none;
-			transform: translate(2px, 2px);
-		}
+	}
+
+	&_Cart {
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
 }

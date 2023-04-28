@@ -3,15 +3,7 @@ import styles from "./ProductCard.module.scss";
 import { titleEditor } from "../../services/titleEditor";
 import { useEffect, useState } from "react";
 
-const ProductCard = ({
-	title,
-	id,
-	image,
-	yearTaken,
-	location,
-	updated,
-	setUpdated,
-}) => {
+const ProductCard = ({ title, id, image, yearTaken, location }) => {
 	const [currentTitle, setCurrentTitle] = useState("");
 	// console.log(id);
 

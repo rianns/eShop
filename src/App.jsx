@@ -12,11 +12,28 @@ import { useEffect, useState } from "react";
 import { getAllProducts } from "./services/photos";
 import ProductList from "./containers/ProductList";
 import ProductPage from "./containers/ProductPage";
+import CartPage from "./containers/CartPage/CartPage";
 
 function App() {
 	const [items, setItems] = useState(null);
 	const [updated, setUpdated] = useState(0);
+	const [cartItems, setCartItems] = useState([]);
 
+	// set the cart
+	const addToCart = (item) => {
+		const { image, pricePerUnit, id } = item;
+		setCartItems([...cartItems, { image, pricePerUnit, id }]);
+		console.log(cartItems);
+	};
+
+	const removeFromCart = (itemToRemove) => {
+		console.log(cartItems);
+		setCartItems(cartItems.filter((item) => item !== itemToRemove));
+	};
+
+	const total = cartItems.reduce((acc, item) => acc + item.price, 0);
+
+	// getting all products
 	useEffect(() => {
 		const wrapper = async () => {
 			const allProducts = await getAllProducts();
@@ -60,6 +77,18 @@ function App() {
 							<ProductPage
 								updated={updated}
 								setUpdated={setUpdated}
+								addToCart={addToCart}
+							/>
+						}
+					/>
+					<Route
+						path='/eShop/cart'
+						element={
+							<CartPage
+								addToCart={addToCart}
+								removeFromCart={removeFromCart}
+								total={total}
+								cartItems={cartItems}
 							/>
 						}
 					/>

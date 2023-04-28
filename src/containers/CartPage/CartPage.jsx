@@ -14,14 +14,14 @@ const CartPage = ({ addToCart, removeFromCart, total, cartItems }) => {
 						key={item.id}
 						className={styles.CartItem_Item}
 					>
+						<button onClick={() => removeFromCart(item)}>
+							Remove
+						</button>
 						<CartItem
 							image={item.image}
 							id={item.id}
 							price={item.price}
 						/>
-						<button onClick={() => removeFromCart(item)}>
-							Remove
-						</button>
 					</div>
 				))
 			)}
